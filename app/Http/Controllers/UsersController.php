@@ -202,3 +202,6 @@ class UsersController extends Controller
         return redirect()->back()->with('message', 'User deleted.');
     }
 }
+
+
+//teste commit
