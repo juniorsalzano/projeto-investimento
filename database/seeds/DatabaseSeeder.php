@@ -11,18 +11,19 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {  
         User::create([
           'cpf'           => '01546585441',        
           'name'          => 'Primeiro Usuario',
           'phone'         => '43991568874',
           'birth'         => '1988-10-01',
           'gender'        => 'M',
+          'notes'         => '',
           'email'         => 'usuario@investimento.com.br',
-          'password'      => bcrypt('123456'),
+          'password'      => env('PASSWORD_HASH') ? bcrypt('123456') : '123456',
+          'status'        => 'active',
+          'permission'    => 'app.user',
         ]);
-      
-        
       
         // $this->call(UserSeeder::class);
     }
