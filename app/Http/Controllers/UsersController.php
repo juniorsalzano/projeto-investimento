@@ -60,8 +60,9 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
+     
       $request = $this->service->store($request->all());
-      if ($request['sucess']) 
+      if ($request['success']) 
         $usuario = $request['data'];
       else
         $usuario = null;
