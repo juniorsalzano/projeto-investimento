@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
           'birth'         => '1988-10-01',
           'gender'        => 'M',
           'notes'         => '',
-          'email'         => 'usuario@investimento.com.br',
+          'email'         => 'adm@investimento.com.br',
           'password'      => env('PASSWORD_HASH') ? bcrypt('123456') : '123456',
           'status'        => 'active',
           'permission'    => 'app.user',
