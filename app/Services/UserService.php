@@ -15,7 +15,7 @@
     private $repository;
     private $validator;
     
-    public function __contruct(UserRepository $repository, UserValidator $validator)
+    public function __construct(UserRepository $repository, UserValidator $validator)
     {
       $this->repository = $repository;
       $this->validator  = $validator;
