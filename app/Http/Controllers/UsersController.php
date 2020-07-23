@@ -46,7 +46,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-      return view("user.index");
+      $users = $this->repository->all();
+      
+      return view("user.index", [
+        'users' => $users
+      ]);
     }
 
     /**
@@ -64,13 +68,15 @@ class UsersController extends Controller
       $request = $this->service->store($request->all());
       $usuario = $request['success'] ? $request['data'] : null;
       
-      session()->flush('success',[
+      session()->flash('success',[
         'success'  => $request['success'],
         'messages' => $request['messages'],
       ]);
-      
+
+      $users = $this->repository->all();
+
       return view("user.index", [
-        'usuario' => $usuario,
+        'users' => $users
       ]);
     }
 

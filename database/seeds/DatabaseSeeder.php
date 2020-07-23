@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
           'phone'         => '43991568874',
           'birth'         => '1988-10-01',
           'gender'        => 'M',
-          'notes'         => '',
+         // 'notes'         => '',
           'email'         => 'adm@investimento.com.br',
           'password'      => env('PASSWORD_HASH') ? bcrypt('123456') : '123456',
           'status'        => 'active',
