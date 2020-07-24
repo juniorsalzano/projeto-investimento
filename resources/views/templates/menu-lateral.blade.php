@@ -7,7 +7,7 @@
       </a>
     </li>
     <li>
-      <a href="dashboard">
+    <a href="{{ route('instituition.index') }}">
         <i class="fa fa-users"></i>
         <h3>Instituições</h3>
       </a>
