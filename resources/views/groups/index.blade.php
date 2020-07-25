@@ -9,6 +9,10 @@
     @include('templates.formulario.select', ['label' => 'Instituition', 'select' => 'instituition_id', 'data' => $instituition_list ,'attributes' => ['placeholder' => 'Instituition']])
     @include('templates.formulario.submit', ['input' => 'Cadastrar'])
     {!! Form::close() !!}
+    
+    
+    
+    @include('groups.list', ['group_list' => $groups])
   
 
 @endsection

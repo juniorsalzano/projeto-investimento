@@ -21,7 +21,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
       return $this->model->pluck($descricao, $chave)->all();
     }
   
-  
     /**
      * Specify Model class name
      *
