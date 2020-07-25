@@ -10,6 +10,8 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\GroupCreateRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use App\Repositories\GroupRepository;
+use App\Repositories\InstituitionRepository;
+use App\Repositories\UserRepository;
 use App\Validators\GroupValidator;
 use App\Services\GroupService;
 
@@ -20,34 +22,24 @@ use App\Services\GroupService;
  */
 class GroupsController extends Controller
 {
-    /**
-     * @var GroupRepository
-     */
-    protected $repository;
-
-    /**
-     * @var GroupValidator
-     */
-    protected $validator;
-
-
-    /**
-     * @var GroupService
-     */
-    protected $service;
-
     
-    /**
-     * GroupsController constructor.
-     *
-     * @param GroupRepository $repository
-     * @param GroupValidator $validator
-     */
-    public function __construct(GroupRepository $repository, GroupValidator $validator, GroupService $service)
+    protected $repository;
+    protected $validator;
+    protected $service;
+    protected $instituitionRepository;
+    protected $userRepository;
+
+    public function __construct(GroupRepository        $repository, 
+                                GroupValidator         $validator, 
+                                GroupService           $service,
+                                InstituitionRepository $instituitionRepository,
+                                UserRepository         $userRepository)
     {
-        $this->repository = $repository;
-        $this->validator  = $validator;
-        $this->service    = $service;
+        $this->repository             = $repository;
+        $this->validator              = $validator;
+        $this->service                = $service;
+        $this->instituitionRepository = $instituitionRepository;
+        $this->userRepository         = $userRepository;
     }
 
     /**
@@ -57,10 +49,14 @@ class GroupsController extends Controller
      */
     public function index()
     {
-      $groups = $this->repository->all();
+      $groups            = $this->repository->all();
+      $user_list         = $this->userRepository->selectBoxList();
+      $instituition_list = $this->instituitionRepository->selectBoxList(); 
       
-      return view('group.index',[
-        'group' => $groups,
+      return view('groups.index',[
+        'group'             => $groups,
+        'user_list'         => $user_list,
+        'instituition_list' => $instituition_list,
       ]);
     }
 
