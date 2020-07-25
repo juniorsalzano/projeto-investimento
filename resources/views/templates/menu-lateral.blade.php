@@ -13,7 +13,7 @@
       </a>
     </li>
     <li>
-      <a href="dashboard">
+    <a href="{{ route('group.index') }}">
         <i class="fa fa-building"></i>
         <h3>Grupos</h3>
       </a>

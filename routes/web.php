@@ -31,3 +31,5 @@ Route::get('/dashboard',['as' => 'user.dashboard' ,'uses' => 'DashboardControlle
 Route::resource('user', 'UsersController');
 
 Route::resource('instituition', 'InstituitionsController');
+
+Route::resource('group', 'GroupsController');

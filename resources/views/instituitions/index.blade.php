@@ -29,7 +29,7 @@
         <td>{{ $inst->id }}</td>
         <td>{{ $inst->name }}</td>
         <td>
-        {!! Form::open(['route' => ['instituition.delete', $inst->id], 'method' => 'DELETE']) !!}
+        {!! Form::open(['route' => ['instituition.destroy', $inst->id], 'method' => 'DELETE']) !!}
         {!! Form::submit('Remover') !!}
         {!! Form::close() !!}
         </td>
