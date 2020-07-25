@@ -1,13 +1,13 @@
 <?php 
 
-namespace App\Service;
+namespace App\Services;
 
 use Illuminate\Database\QueryException;
 use Exception;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 use App\Repositories\GroupRepository;
-use App\Validators\GroupValidators;
+use App\Validators\GroupValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
 
@@ -17,7 +17,7 @@ class GroupService
   private $validator;
   
   
-  public function __construct(GroupRepository $repository, GroupValidators $validator)
+  public function __construct(GroupRepository $repository, GroupValidator $validator)
   {
     $this->repository = $repository;
     $this->validator  = $validator;
