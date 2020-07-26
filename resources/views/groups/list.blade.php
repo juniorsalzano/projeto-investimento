@@ -15,6 +15,12 @@
           <td> {{ $group->name }} </td>
           <td> {{ $group->instituition->name }} </td>
           <td> {{ $group->user->name }}</td>
+          <td>
+            {{ Form::open() }}
+              {{ Form::submit('Remover') }}
+              <a href="{{ route('group.show', $group->id) }}">Detalhes</a>
+            {{ Form::close() }}
+          </td>
         </tr> 
         @endforeach
     </tbody>

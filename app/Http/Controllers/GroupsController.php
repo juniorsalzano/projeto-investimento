@@ -89,7 +89,16 @@ class GroupsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id){}
+    public function show($id)
+    {
+      $group = $this->repository->find($id);
+      $user  = $this->userRepository->selectBoxList();
+      
+      return view('groups.show', [
+        'group'     => $group,
+        'user_list' => $user,
+      ]);
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -49,23 +49,23 @@ class User extends Authenticatable
       $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
     }
     
-    public function getCpfAttribute() 
+    public function getFormattedCpfAttribute() 
     {
-      $cpf = $this->attributes('cpf');
-      return substr($cpf, 0, 3). "." . substr($cpf, 3, 3). ".". substr($cpf, 7, 3). '-'. substr();
+      $cpf = $this->attributes['cpf'];
+      return substr($cpf, 0, 3). "." . substr($cpf, 3, 3). ".". substr($cpf, 7, 3). '-'. substr($cpf,9,2);
     }
     
-    public function getPhoneAttribute() 
+    public function getFormattedPhoneAttribute() 
     {
-      $phone = $this->attribute['phone'];
-      return "(" . substr($phone, 0, 2) . ")" . substr($phone, 2,4) . "-" . substr($phone, -4);
+      $phone = $this->attributes['phone'];
+      return "(" . substr($phone, 0, 2) . ")" . substr($phone, 2,4) . "-" . substr($phone, 4);
     }
     
-    public function getBirthAttribute() 
+    public function getFormattedBirthAttribute() 
     {
-      $birth = explode('-',$this->attribute['birth']);
+      $birth = explode('-',$this->attributes['birth']);
       
-      if (count((array) $birth) != 3)
+      if (count($birth) != 3)
         return "";
         
       $birth = $birth[2]. '/' . $birth[1] . '/' . $birth[0];
