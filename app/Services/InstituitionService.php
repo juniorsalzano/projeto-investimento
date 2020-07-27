@@ -51,7 +51,31 @@ class InstituitionService
     
   }
   
-  public function update(){}
+  public function update($data, $id)
+  {
+    try 
+    {
+
+      $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+      $instituicao = $this->repository->update($data, $id);
+      
+      return [
+        'success'  => true,
+        'messages' => 'Instituição Ataulizada',
+        'data'     => $instituicao,
+      ];
+      
+    } catch (Exception $e) {
+
+      switch (get_class($e)) {
+        case QueryException::class     : return ['success' => false, 'messages' => $e->getMessage()];
+        case ValidatorException::class : return ['success' => false, 'messages' => $e->getMessageBag()];
+        case Exception::class          : return ['success' => false, 'messages' => $e->getMessage()];
+        default                        : return ['success' => false, 'messages' => $e->getMessage()];
+      }
+    }
+  }
+    
   public function destroy(){}
   
   
