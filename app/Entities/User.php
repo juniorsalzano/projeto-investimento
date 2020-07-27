@@ -44,6 +44,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function groups()
+    {
+      return $this->belongsToMany(Group::class, 'user_groups');
+    }
+    
     public function getPasswordAttribute ($value) 
     {
       $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;

@@ -22,39 +22,6 @@
   {!! Form::close() !!}
   
   
-  <table class="default-table">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>CPF</td>
-        <td>Nome</td>
-        <td>Telefone</td>
-        <td>Nascimento</td>
-        <td>E-mail</td>
-        <td>Status</td>
-        <td>Permissão</td>
-        <td>Menu</td>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($users as $user)
-      <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->Formatted_cpf }}</td>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->Formatted_phone }}</td>
-        <td>{{ $user->Formatted_birth }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->status }}</td>
-        <td>{{ $user->permission }}</td>
-        <td>
-          {!! Form::open(['route' => ['user.destroy',$user->id], 'method'  => 'DELETE'])  !!}
-          {!! Form::submit('Remover') !!}
-          {!! Form::close() !!}
-        </td>
-      </tr>
-      @endForeach
-    </tbody>
-  </table>
+  @include('user.list', ['user_list' => $group_users])
 
 @endsection

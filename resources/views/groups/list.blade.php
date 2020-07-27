@@ -14,7 +14,7 @@
           <td> {{ $group->id }} </td>
           <td> {{ $group->name }} </td>
           <td> {{ $group->instituition->name }} </td>
-          <td> {{ $group->user->name }}</td>
+          <td> {{ $group->owner->name }}</td>
           <td>
             {{ Form::open() }}
               {{ Form::submit('Remover') }}

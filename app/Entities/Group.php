@@ -22,9 +22,15 @@ class Group extends Model implements Transformable
      */
     protected $fillable = ['name', 'user_id', 'instituition_id'];
     
-    public function user()
+    public function owner()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    public function users()
+    {
+      //Relacionamento N:N
+      return $this->belongsToMany(User::class, 'user_groups');
     }
     
     public function instituition()
