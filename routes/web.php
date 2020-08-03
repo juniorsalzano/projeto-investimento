@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\Route;
  * =============================================================
 */
 
-Route::get('/login',['uses' => 'Controller@fazerLogin']);
-Route::post('/login',['as' => 'user.login' ,'uses' => 'DashboardController@auth']);
 Route::get('/dashboard',['as' => 'user.dashboard' ,'uses' => 'DashboardController@index']);
+Route::get('/login',    ['as' => 'user.login'     ,'uses' => 'DashboardController@formLogin']);
+Route::post('/login/do',['as' => 'user.auth'      ,'uses' => 'DashboardController@auth']);
 
 Route::resource('user', 'UsersController');
 Route::resource('instituition', 'InstituitionsController');
@@ -36,3 +36,6 @@ Route::resource('instituition.product', 'ProductsController');
 Route::get('moviment', ['as' => 'moviment.application', 'uses' => 'MovimentsController@application']);
 
 Route::post('group/{group_id}/user', ['as' => 'group.user.store', 'uses' => 'GroupsController@userStore']);
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

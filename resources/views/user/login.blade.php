@@ -17,7 +17,7 @@
         <h1>Investimento</h1>
         <h3>O nosso gerenciador de investimento</h3>
 
-        {!! Form::open(['route' => 'user.login', 'method' => 'post']) !!}
+        {!! Form::open(['route' => 'user.auth', 'method' => 'post']) !!}
             <p>Acesse o sistema</p>
 
             <label>
